@@ -17,15 +17,15 @@ pipeline {
             }
         }
         stage('Deploy to GCE') {
-            steps {
-                withCredentials([[$class: 'FileBinding', credentialsId: 'b7707729-bcd5-448d-b326-d4df79ad4955', variable: 'GOOGLE_APPLICATION_CREDENTIALS']]) {
-                    sh 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
-                    sh 'gcloud config set project steam-circlet-405222'
-                    // Add your gcloud commands for deployment here
-                    // For example, deploying a container to a GCE instance
-                    sh 'gcloud compute instances update-container jenkins --container-image gcr.io/steam-circlet-405222/my-image:tag'
-                }
-            }
+    steps {
+        withCredentials([file(credentialsId: 'b7707729-bcd5-448d-b326-d4df79ad4955', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+            sh 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
+            sh 'gcloud config set project steam-circlet-405222'
+            // Your gcloud commands for deployment
+            sh 'gcloud compute instances update-container jenkins'
         }
+    }
+}
+
     }
 }

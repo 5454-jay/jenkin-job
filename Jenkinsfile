@@ -3,10 +3,12 @@ pipeline {
     stages {
         stage('Deploy to GCE') {
             steps {
-                withCredentials([file(credentialsId: 'GCP_JSON_Key', variable: 'GCP_KEY')]) {
-                    sh 'gcloud auth activate-service-account --key-file $GCP_KEY'
-                    // Additional commands for deployment
+                
+                withCredentials([file(credentialsId: 'a12bc355-fca8-49b2-a46c-902ec8d9f8aa', variable: 'GCP_KEY')]) {
+                      sh 'gcloud auth activate-service-account --key-file $GCP_KEY'
+                    // Other pipeline steps
                 }
+
             }
         }
     }

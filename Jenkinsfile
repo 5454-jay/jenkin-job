@@ -25,6 +25,8 @@ pipeline {
             steps {
                 withCredentials([file(credentialsId: 'class-lab-3', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
                     script {
+
+                        sh "gcloud auth revoke --key-file=${GOOGLE_APPLICATION_CREDENTIALS}"
                         // Authenticate with GCP
                         sh "gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}"
 

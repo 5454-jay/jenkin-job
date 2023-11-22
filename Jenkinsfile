@@ -1,15 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('Deploy to GCE') {
+        stage('Deploy') {
             steps {
-                script {
-                    // Set the path to your service account key
-                    def serviceAccountKeyPath = 'steam-circlet-405222-f2cf4c5f26eb.json'
-                    // Authenticate with GCP using the service account key
-                    sh "gcloud auth activate-service-account --key-file=${serviceAccountKeyPath}"
-                    
-                    // Additional pipeline commands
+                withCredentials([file(credentialsId: 'a12bc355-fca8-49b2-a46c-902ec8d9f8aa', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                    // Your deployment scripts that require GCP authentication
                 }
             }
         }

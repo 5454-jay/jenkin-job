@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "steam-circlet-405222",
+  "private_key_id": "e959f6475aa8238e0e31cf3639c1eef436249992",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCVH6605F/gbG34\nKUqgXoBx4ZL2Q8E1LFP37wMKmYlaqOolxbgHgXYgp8NnTFxLVWp1juZulraMGff0\n4yKwstwwJDufKVzDQfRUMfMvtNxy5ssiX7bHqXawIg5THYg3nkd+3S5HGDvz0o3H\nkiFIiz9NSAbyCx3NpFJBhlhXNa+5BVF9GWswnfq4TL7la1vQX6MUEcC2pAdWyxrq\n/dXfbtvkXs4ZW3GAzecEQPuPz028P1M0tyrZrfWHp+hYgqI/E1lDkzR8fFFFTaLH\n8g5Y30JJe264P9KsuI4BnUNsy3NZZaQd2GzVkDvlvHBjQ8n0hwKHIPlhYUHPR1kG\n36ZgtsBbAgMBAAECggEAAz8ad3VAE3c18GmOFSK1MLQNcz4Qd8qoCSVfFSuViinI\nb4/9tVjZxnfE5WppB8tf2OmdvpEOxVaye9Z9hJ9ffyvnIUw/i+KwYc86k/4rakhs\ndc1A02T02vCzl5bRr1G/r+bG5zCDSOUHF230l6J95BVS2QWvkdOtTvHKwngEJwbE\n3wHqambnr8Fg1zImwmDvlOX4PtgOxf3HUnxPAEZtmTa1mgZ5cBmRTQVaANGZv11m\n4LjwIYTj88v3jbo4Z6BJ5BL7RbzOgujyZ7jjHk5c+/sKUleiNcUU1yeE5yTyjPaJ\npQwRSTwzs43m6NmRAgPFydxoBMndBFO3UOGz7H9UcQKBgQDMTIIYpkUMy759nyn8\n4ayj3t547JOMz6M/EbDWej8+/wXE8MMUFDqlEmNGrqyUje93HfxH6XYI1B/Skc0+\nrdZfxFe8A6WPnHMiLGSfnKjbqhGmS3Usc7PNj3R5bV2Tlap0prANvtI5585NZoMY\nWXRLlxdDqpVaQBmhqhgpJnaQ0QKBgQC63Kh0gD3zYDulDfdK0rsYMa8j2yMRpQuV\nbxC4mMJZTvVGhVpW0BUMnW1M0ID5rrzf4A3yOtj/Q0Qmd/1CBqNCuCADahZZ1tGK\nL0o1hU+8zssmFwzji+83l2QUPAU72cCKa09k1U+deb+If0f9eNeWmcfZd2YVJfPR\nTfcQVDrpawKBgF8OVhXb/xLGFdrjXKjx497XStIe2URSNBWbSJlyhczs4aVRlKLa\nCrNVi+WOTnRMWhglVoWrJaVT9X6HImVAgxdKBrxPQhBA7fz/hM4TGSojxlSGlX1a\nVFWXos0AyuJpZ8cg65dpqu0QYxf2U5bXwFmPcl6klxtH6eUjfFxhLheRAoGAM6LS\nMg9WDzDiioPHeDevV8oy+ZeOo0uWXd7pIfmkiwVUpf4nrqGlj2zZTUa4vUZaDwtd\nDzjPygoOhQrXQy2OY9t5jTf9oSnJkYPr38pM9IG4hXgNKbv7iMMe9rB3ScisehOZ\nRuXjMEL6eH+jpxmDiaxJG4DxBpsMOyRuR2bfOK0CgYEAo4Y8jah/XEaex5ZBWqqw\nDpfMtrE2O5KNE6N/crcyQ4ZO7NCXmb49zJpJFlvGFu9o6xZ5fF462Eo1Lixxpi6i\nGVSsbowCSr9zZqwOmevSKpnfM6KD/yfFyjkG8e8kzXMH4VStn2fSL++RsKwkxzi6\nID2IMwcgck7Ib2npPRH86Uc=\n-----END PRIVATE KEY-----\n",
+  "client_email": "jenkinacc@steam-circlet-405222.iam.gserviceaccount.com",
+  "client_id": "117970028240413202287",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/jenkinacc%40steam-circlet-405222.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

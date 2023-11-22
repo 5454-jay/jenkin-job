@@ -31,7 +31,7 @@ pipeline {
                         // Copy files to Compute Engine instance
                         echo 'sh gcloud compute scp --recurse ./assets instance-name:/path/to/target-directory/assets --zone=your-instance-zone'
                         echo 'sh gcloud compute scp --recurse ./vendor instance-name:/path/to/target-directory/vendor --zone=your-instance-zone'
-                        sh "gcloud compute scp ./index.html instance-name:jenkins/index.html --zone=us-central1-a"
+                        echo 'sh gcloud compute scp ./index.html instance-name:jenkins/index.html --zone=us-central1-a'
                         echo 'files are copyed'
                         // Restart web server or perform any other necessary commands on the VM
                         // For example, if you're using Apache or Nginx, you might need to reload it

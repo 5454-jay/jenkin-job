@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Deploy') {
             steps {
-                withCredentials([file(credentialsId: '4bc22f5b-01ba-4cb7-883d-e7088d8a4aae', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                withCredentials([file(credentialsId: '6d19e24e-b65f-42f9-82db-0a8781083c95', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
                     // Your deployment scripts that require GCP authentication
                 }
             }

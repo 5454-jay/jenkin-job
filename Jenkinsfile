@@ -1,11 +1,22 @@
 pipeline {
     agent any
     stages {
+        stage('Build') {
+            steps {
+                echo 'This is a Build step in  Jenkinsfile'
+                // Commands to build your application
+            }
+        }
+        stage('Test') {
+            steps {
+                  echo 'This is a Test step in  Jenkinsfile'
+                // Commands to test your application
+            }
+        }
         stage('Deploy') {
             steps {
-                withCredentials([file(credentialsId: '4b7a1aa7-631d-4a5c-851a-0cbb39665459', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
-                    // Your deployment scripts that require GCP authentication
-                }
+                  echo 'This is a Deploy step in  Jenkinsfile'
+                // Commands to deploy your application
             }
         }
     }

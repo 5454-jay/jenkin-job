@@ -1,23 +1,51 @@
 pipeline {
     agent any
+
+    environment {
+        GOOGLE_APPLICATION_CREDENTIALS = 'gcpkey3.json'
+    }
+
     stages {
+        stage('Checkout') {
+            steps {
+                // Checkout from Git repository
+                checkout scm
+            }
+        }
+
         stage('Build') {
             steps {
-                echo 'This is a Build step in  Jenkinsfile'
-                // Commands to build your application
+                // Add steps if you need to build your project
+                // For a simple HTML project, you may not need a build step
+                echo 'Running build steps'
             }
         }
-        stage('Test') {
-            steps {
-                  echo 'This is a Test step in  Jenkinsfile'
-                // Commands to test your application
-            }
-        }
+
         stage('Deploy') {
             steps {
-                  echo 'This is a Deploy step in  Jenkinsfile'
-                // Commands to deploy your application
+                withCredentials([file(credentialsId: '787dd772-19c4-45cf-9c44-50705caba712', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                    script {
+                        // Authenticate with GCP
+                        sh "gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}"
+
+                        // Copy files to Compute Engine instance
+                        echo 'sh gcloud compute scp --recurse ./assets instance-name:/path/to/target-directory/assets --zone=your-instance-zone'
+                        echo 'sh gcloud compute scp --recurse ./vendor instance-name:/path/to/target-directory/vendor --zone=your-instance-zone'
+                        sh "gcloud compute scp ./index.html instance-name:jenkins/index.html --zone=us-central1-a"
+                        echo 'files are copyed'
+                        // Restart web server or perform any other necessary commands on the VM
+                        // For example, if you're using Apache or Nginx, you might need to reload it
+                        // sh "gcloud compute ssh instance-name --zone=your-instance-zone -- 'sudo systemctl reload apache2'"
+                    }
+                }
             }
+        }
+    }
+    
+    post {
+        always {
+            echo 'Cleaning up'
+            // Perform any cleanup tasks
         }
     }
 }

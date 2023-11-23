@@ -1,53 +1,42 @@
 pipeline {
     agent any
-
-    environment {
-        GOOGLE_APPLICATION_CREDENTIALS = 'gcpkey3.json'
+    environment {   
+        GCLOUD_CREDENTIALS_FILE = './class-lab-3-e7bb5825c019.json'
+        GCP_PROJECT = 'class-lab-3'
+        VM_NAME = 'jenkin-1'
+        VM_ZONE = 'us-central1-a'
+        DEPLOYMENT_DIRECTORY = '/home/jayroy0054/jenkins/index.html'
     }
-
     stages {
-        stage('Checkout') {
-            steps {
-                // Checkout from Git repository
-                checkout scm
-            }
-        }
-
         stage('Build') {
             steps {
-                // Add steps if you need to build your project
-                // For a simple HTML project, you may not need a build step
-                echo 'Running build steps'
+                echo 'Building...'      
             }
         }
-
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+            }
+        }
         stage('Deploy') {
             steps {
-                withCredentials([file(credentialsId: 'class-lab-3', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
-                    script {
+                echo 'Deploying...'
+                withCredentials([file(credentialsId: 'vm-ssh-key', variable: 'GCLOUD_CREDENTIALS_FILE')]) {
+                    // Authenticate with GCP
+                    sh 'gcloud auth activate-service-account --key-file=${GCLOUD_CREDENTIALS_FILE}'
+                    sh 'gcloud config set project ${GCP_PROJECT}'
 
-                        
-                        // Authenticate with GCP
-                        sh "gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}"
-
-                        // Copy files to Compute Engine instance
-                        echo 'sh gcloud compute scp --recurse ./assets instance-name:/path/to/target-directory/assets --zone=your-instance-zone'
-                        echo 'sh gcloud compute scp --recurse ./vendor instance-name:/path/to/target-directory/vendor --zone=your-instance-zone'
-                        echo 'sh gcloud compute scp ./index.html instance-name:jenkins/index.html --zone=us-central1-a'
-                        echo 'files are copyed'
-                        // Restart web server or perform any other necessary commands on the VM
-                        // For example, if you're using Apache or Nginx, you might need to reload it
-                        // sh "gcloud compute ssh instance-name --zone=your-instance-zone -- 'sudo systemctl reload apache2'"
-                    }
+                    // Copy files to the Compute Engine instance
+                    sh 'gcloud compute scp --zone=${VM_ZONE} ./index.html ${VM_NAME}:${DEPLOYMENT_DIRECTORY}'
                 }
             }
         }
     }
-    
     post {
         always {
-            echo 'Cleaning up'
-            // Perform any cleanup tasks
+            echo 'Cleaning up...'
+            // Perform any cleanup tasks, like removing temporary files
+            sh 'rm -rf target_directory/'
         }
     }
 }

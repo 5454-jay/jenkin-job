@@ -23,11 +23,10 @@ pipeline {
                 echo 'Deploying...'
                 withCredentials([file(credentialsId: 'vm-ssh-key', variable: 'GCLOUD_CREDENTIALS_FILE')]) {
                     // Authenticate with GCP
-                    // sh 'gcloud auth activate-service-account --key-file=${GCLOUD_CREDENTIALS_FILE}'
-                    // sh 'gcloud config set project ${GCP_PROJECT}'
-
+                     sh 'gcloud auth activate-service-account --key-file=${GCLOUD_CREDENTIALS_FILE}'
+                     sh 'gcloud config set project ${GCP_PROJECT}'
                     // Copy files to the Compute Engine instance
-                    // sh 'gcloud compute scp --zone=${VM_ZONE} ./index.html ${VM_NAME}:${DEPLOYMENT_DIRECTORY}'
+                     sh 'gcloud compute scp --zone=${VM_ZONE} ./index.html ${VM_NAME}:${DEPLOYMENT_DIRECTORY}'
                 }
             }
         }

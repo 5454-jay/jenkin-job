@@ -11,13 +11,11 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'      
-            }
-        }
+            } }
         stage('Test') {
             steps {
                 echo 'Testing...'
-            }
-        }
+            } }
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
@@ -27,15 +25,9 @@ pipeline {
                      sh 'gcloud config set project ${GCP_PROJECT}'
                     // Copy files to the Compute Engine instance
                      sh 'gcloud compute scp --zone=${VM_ZONE} ./index.html ${VM_NAME}:${DEPLOYMENT_DIRECTORY}'
-                }
-            }
-        }
-    }
+                } } } }
     post {
         always {
             echo 'Cleaning up...'
             // Perform any cleanup tasks, like removing temporary files
-            sh 'rm -rf target_directory/'
-        }
-    }
-}
+            sh 'rm -rf target_directory/'   }}}
